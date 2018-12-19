@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
         data => {
             this.apiResponse = data;
             this.newsList = Utils.mapApiResponseToNews(this.apiResponse);
+            console.log("this.apiResponse", this.apiResponse);
+            console.log("this.newsList", this.newsList);
         }
       );
   }

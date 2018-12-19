@@ -4,19 +4,21 @@ const generateExcerpt = (text:string, wordCount:number) => {
     return text.substr(0, text.lastIndexOf(' ', wordCount)) + '...';
 };
 
-const mapApiResponseToNews = (response) => {
-    let items:News[];
-    if(!response.results) return items;
+const mapApiResponseToNews = (data) => {
+    let newsList:News[] = new Array<News>();
+    if(!data.response.results) return newsList;
 
-    for(let i = 0; i < response.results.length; i++) {
-        const responseItem = response.results[i];
-        let newsItem:News;
+    for(let i = 0; i < data.response.results.length; i++) {
+        const responseItem = data.response.results[i];
+        let newsItem:News = new News();
 
-        newsItem.id = responseItem.id
+        newsItem.id = responseItem.id;
+        newsItem.Section = responseItem.sectionName;
+        newsItem.SectionId = responseItem.SectionId;
         if(responseItem.blocks && responseItem.blocks.body) {
             let contentItem = responseItem.blocks.body[0];
             newsItem.Content = contentItem.bodyHtml;
-            newsItem.Spot = this.generateExcerpt(contentItem.bodyTextSummary);
+            //newsItem.Spot = this.generateExcerpt(contentItem.bodyTextSummary);
             newsItem.CreatedDate = contentItem.createdDate;
             newsItem.ModifiedDate = contentItem.lastModifiedDate;
 
@@ -31,14 +33,11 @@ const mapApiResponseToNews = (response) => {
                         }
                         break;
                     }
-                }
-                break;
+                } 
             }
         }
-        
-    }
-
-    console.log("erhan", response);
+        newsList.push(newsItem);
+    } 
 };
 
 
