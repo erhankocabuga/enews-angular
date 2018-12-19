@@ -18,7 +18,7 @@ const mapApiResponseToNews = (response) => {
             newsItem.Content = contentItem.bodyHtml;
             newsItem.Spot = this.generateExcerpt(contentItem.bodyTextSummary);
             newsItem.CreatedDate = contentItem.createdDate;
-            newsItem.CreatedDate = contentItem.lastModifiedDate;
+            newsItem.ModifiedDate = contentItem.lastModifiedDate;
 
             if(contentItem.elements) {
                 for (let index = 0; index < contentItem.elements.length; index++) {
