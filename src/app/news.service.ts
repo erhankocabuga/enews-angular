@@ -24,6 +24,7 @@ export class NewsService {
     const params = new HttpParams()
                       .set("api-key", AppSettings.ApiKey)
                       .set("show-blocks", "body")
+                      .set("show-fields", "thumbnail")
                       .set("page", pageNo.toString());
 
     return `${apiUrl}/${pathName}?${params.toString()}`;
@@ -39,6 +40,7 @@ export class NewsService {
 
   getCategoryNews(pageNo:number): Observable<any> {
     const url = this.apiEndPointList(pageNo);
+    console.log("İstek:", url);
     return this.http.get(url);
   }
 

@@ -1,3 +1,10 @@
+export class AssetItem {
+    file: string;
+    type: string;
+    width: number;
+    height: number;
+}
+
 export class News {
     id: string;
     Section: string;
@@ -7,5 +14,6 @@ export class News {
     Content: string;
     CreatedDate: string;
     ModifiedDate: string;
-    Image: string[];
+    Thumbnail: string;
+    AssetList: AssetItem[]; 
 }
