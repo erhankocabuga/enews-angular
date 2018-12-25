@@ -1,0 +1,43 @@
+
+		<!-- section -->
+		<div class="section" *ngIf="list">
+        <!-- container -->
+        <div class="container">
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-8">
+              <div class="row"> 
+                 
+                <!-- post -->
+                <div class="col-md-12" *ngFor="let item of list">
+                  <div class="post post-row">
+                    <a class="post-img" [attr.href]="item.Url"><img [attr.src]="item.Thumbnail" [attr.alt]="item.Title"></a>
+                    <div class="post-body">
+                      <div class="post-meta">
+                        <a class="post-category {{ getSectionClass(item.SectionId) }}" [attr.href]="'/' + item.SectionId">{{item.Section}}</a>
+                        <span class="post-date">{{item.CreatedDate | date: 'MMMM dd, yyyy'}}</span>
+                      </div>
+                      <h3 class="post-title"><a [attr.href]="item.Url">{{item.Title}}</a></h3>
+                      <p>{{item.Spot}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /post -->
+   
+                
+                <div class="col-md-12">
+                  <div class="section-row">
+                    <button class="primary-button center-block">Load More</button>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <div class="col-md-4">
+              <app-sidebar></app-sidebar>
+            </div>
+          </div>
+          <!-- /row -->
+        </div>
+        <!-- /container -->
+      </div>
+      <!-- /section -->

@@ -7,6 +7,7 @@ export class AssetItem {
 
 export class News {
     id: string;
+    Url: string;
     Section: string;
     SectionId: string;
     Title: string;
@@ -15,5 +16,11 @@ export class News {
     CreatedDate: string;
     ModifiedDate: string;
     Thumbnail: string;
-    AssetList: AssetItem[]; 
+    AssetList: AssetItem[];  
+}
+
+export class Section {
+    id: string;
+    Url: string;
+    Name: string;
 }

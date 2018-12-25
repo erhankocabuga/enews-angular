@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { News } from '../models/News';
+import { News } from '../models/Objects';
 import { NewsService } from '../news.service';
 import Utils from '../general/utils';
 
@@ -11,7 +11,7 @@ import Utils from '../general/utils';
 export class HomeComponent implements OnInit {
 
   apiResponse: {};
-  newsList:News[];
+  newsList:News[] = [];
 
   constructor(
     private newsService: NewsService
@@ -21,9 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getNews();
-  
-  
-    
+   
   }
 
   getNews(): void {
@@ -31,8 +29,20 @@ export class HomeComponent implements OnInit {
       .subscribe(
         data => {
             this.apiResponse = data;
-            this.newsList = Utils.mapApiResponseToNews(this.apiResponse);
-            console.log("this.apiResponse", this.apiResponse);
+            
+            let results:News[] = Utils.mapApiResponseToNews(this.apiResponse);
+            this.newsList = [...this.newsList, ...results];
+            console.log("this.newsList", this.newsList);
+        }
+      );
+
+      this.newsService.getCategoryNews(2)
+      .subscribe(
+        data => {
+            this.apiResponse = data;
+            
+            let results:News[] = Utils.mapApiResponseToNews(this.apiResponse);
+            this.newsList = [...this.newsList, ...results];
             console.log("this.newsList", this.newsList);
         }
       );

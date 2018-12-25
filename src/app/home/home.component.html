@@ -1,5 +1,15 @@
-<p>
-  home works!
 
-  <span *ngIf="apiResponse">{{ apiResponse.response.userTier }}</span>
-</p>
+
+<p>
+  home works! 
+ </p>
+
+
+<div class="section">
+  <div class="container">
+    <app-listtemplate1 [list]="newsList | slice:0:2"></app-listtemplate1>
+    <app-listtemplate2 [list]="newsList | slice:2:14"></app-listtemplate2>
+  </div>
+</div>
+
+<app-listtemplatesection [list]="newsList | slice:14"></app-listtemplatesection>

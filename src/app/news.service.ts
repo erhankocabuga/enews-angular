@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { News } from './models/News';
+import { News } from './models/Objects';
 import { AppSettings } from './general/settings';
 
 
@@ -14,9 +14,6 @@ export class NewsService {
   constructor(private http: HttpClient) { 
    
   }
-
-  
-
    
   apiEndPointList(pageNo:number): string {
     const apiUrl:string = AppSettings.ApiUrl;
@@ -25,7 +22,8 @@ export class NewsService {
                       .set("api-key", AppSettings.ApiKey)
                       .set("show-blocks", "body")
                       .set("show-fields", "thumbnail")
-                      .set("page", pageNo.toString());
+                      .set("section", "world|science|technology|football|business|games|environment|culture")
+                      .set("page", pageNo.toString())
 
     return `${apiUrl}/${pathName}?${params.toString()}`;
   }
