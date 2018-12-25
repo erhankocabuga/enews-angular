@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { News } from '../../models/News';
+import { News } from '../../models/Objects';
 
 import Utils from '../../general/utils';
 

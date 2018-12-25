@@ -15,7 +15,7 @@ export class NewsService {
    
   }
    
-  apiEndPointList(pageNo:number): string {
+  getCategoryNewsEndpoint(pageNo:number): string {
     const apiUrl:string = AppSettings.ApiUrl;
     const pathName:string = "search";
     const params = new HttpParams()
@@ -28,7 +28,7 @@ export class NewsService {
     return `${apiUrl}/${pathName}?${params.toString()}`;
   }
 
-  apiEndPointDetail(contentUrl:string): string {
+  getNewsDetailEndpoint(contentUrl:string): string {
     const apiUrl:string = AppSettings.ApiUrl; 
     const params = new HttpParams()
                       .set("api-key", AppSettings.ApiKey);
@@ -37,13 +37,13 @@ export class NewsService {
   }
 
   getCategoryNews(pageNo:number): Observable<any> {
-    const url = this.apiEndPointList(pageNo);
+    const url = this.getCategoryNewsEndpoint(pageNo);
     console.log("İstek:", url);
     return this.http.get(url);
   }
 
   getNewsDetail(contentUrl:string): Observable<any> {
-    const url = this.apiEndPointDetail(contentUrl);
+    const url = this.getNewsDetailEndpoint(contentUrl);
     return this.http.get<News>(url);
   }
 
