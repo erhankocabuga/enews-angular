@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
         data => {
             this.apiResponse = data;
             
-            let results:News[] = Utils.mapApiResponseToNews(this.apiResponse);
+            let results:News[] = Utils.mapApiResponseToNewsForList(this.apiResponse);
             this.newsList = [...this.newsList, ...results];
             console.log("this.newsList", this.newsList);
         }
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         data => {
             this.apiResponse = data;
             
-            let results:News[] = Utils.mapApiResponseToNews(this.apiResponse);
+            let results:News[] = Utils.mapApiResponseToNewsForList(this.apiResponse);
             this.newsList = [...this.newsList, ...results];
             console.log("this.newsList", this.newsList);
         }

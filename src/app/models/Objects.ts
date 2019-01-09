@@ -24,3 +24,9 @@ export class Section {
     Url: string;
     Name: string;
 }
+
+export class Comment {
+    name: string;
+    email: string;
+    message: string;
+}

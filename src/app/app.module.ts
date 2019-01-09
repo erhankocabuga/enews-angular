@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import  { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { Listtemplate1Component } from './components/listtemplate1/listtemplate1
 import { Listtemplate2Component } from './components/listtemplate2/listtemplate2.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ListtemplatesectionComponent } from './components/listtemplatesection/listtemplatesection.component';
+import { SocialShareComponent } from './components/social-share/social-share.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { ListtemplatesectionComponent } from './components/listtemplatesection/l
     Listtemplate1Component,
     Listtemplate2Component,
     SidebarComponent,
-    ListtemplatesectionComponent
+    ListtemplatesectionComponent,
+    SocialShareComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -31,19 +31,27 @@ export class NewsService {
   getNewsDetailEndpoint(contentUrl:string): string {
     const apiUrl:string = AppSettings.ApiUrl; 
     const params = new HttpParams()
-                      .set("api-key", AppSettings.ApiKey);
+                      .set("api-key", AppSettings.ApiKey)
+                      .set("show-fields", "thumbnail")
+                      .set("show-blocks", "all");
 
     return `${apiUrl}/${contentUrl}?${params.toString()}`;
   }
 
   getCategoryNews(pageNo:number): Observable<any> {
     const url = this.getCategoryNewsEndpoint(pageNo);
+    if(AppSettings.IsDevelopment) {
+      console.log("İstek:", url);
+    }
     console.log("İstek:", url);
     return this.http.get(url);
   }
 
   getNewsDetail(contentUrl:string): Observable<any> {
     const url = this.getNewsDetailEndpoint(contentUrl);
+    if(AppSettings.IsDevelopment) {
+      console.log("İstek:", url);
+    }
     return this.http.get<News>(url);
   }
 
