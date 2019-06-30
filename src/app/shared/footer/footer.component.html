@@ -7,7 +7,12 @@
 					<div class="col-md-5">
 						<div class="footer-widget">
 							<div class="footer-logo">
-								<a href="index.html" class="logo"><img src="./assets/img/logo.png" alt=""></a>
+								<a href="index.html" class="logo"><img src="./assets/img/enews-angular.png" alt=""></a>
+								<p style="padding-top: 20px">
+                                    Powered by <a href="https://angular.io/" target="_blank">Angular</a> <br />
+                                    Developer: <a href="https://erhankocabuga.com" target="_blank">Erhan KOCABUGA</a> <br/>
+                                    News Source: <a href="https://open-platform.theguardian.com" target="_blank">The Guardian Api</a>
+                                </p>
 							</div>
 							<ul class="footer-nav">
 								<li><a href="#">Privacy Policy</a></li>
@@ -35,7 +40,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							</div>
 							<div class="col-md-6">
 								<div class="footer-widget">
-									<h3 class="footer-title">Catagories</h3>
+									<h3 class="footer-title">Categories</h3>
 									<ul class="footer-links">
 										<li *ngFor="let item of categories | slice:0:4">
 											<a [attr.href]="item.Url">{{item.Name}}</a>

@@ -7,13 +7,13 @@
         <div class="container">
           <!-- logo -->
           <div class="nav-logo">
-            <a routerLink="/" class="logo"><img src="./assets/img/logo.png" alt=""></a>
+            <a routerLink="/" class="logo"><img src="/assets/img/enews-angular.png" style="width: auto; height: 50px;" alt=""></a>
           </div>
           <!-- /logo -->
 
           <!-- nav -->
           <ul class="nav-menu nav navbar-nav">
-              <li *ngFor="let item of categories | slice:0:4" [attr.class]="getSectionClass(item.id)">
+              <li *ngFor="let item of categories | slice:0:6" [attr.class]="getSectionClass(item.id)">
                 <a [attr.href]="item.Url">{{item.Name}}</a>
               </li> 
           </ul>
@@ -39,10 +39,10 @@
         <div class="section-row">
           <ul class="nav-aside-menu">
             <li><a routerLink="/">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">About Us</a></li>
             <li><a href="#">Join Us</a></li>
             <li><a href="#">Advertisement</a></li>
-            <li><a href="contact.html">Contacts</a></li>
+            <li><a href="#">Contacts</a></li>
           </ul>
         </div>
         <!-- /nav -->
@@ -58,10 +58,18 @@
           </ul>
         </div>
         <!-- /social links -->
-
-        <!-- aside nav close -->
-        <button class="nav-aside-close"><i class="fa fa-times"></i></button>
-        <!-- /aside nav close -->
+		
+		 <div class="section-row">
+			<div class="nav-logo"> 
+				<a routerLink="/" class="logo"><img src="/assets/img/enews-angular.png" /></a>
+				<p style="padding-top:20px">
+					Powered by <a href="https://angular.io/" target="_blank">Angular</a> <br />
+					Developer: <a href="https://erhankocabuga.com" target="_blank">Erhan KOCABUGA</a><br />
+					News Source: <a href="https://open-platform.theguardian.com" target="_blank">The Guardian Api</a>
+				 </p>
+			</div>
+		</div>
+ 
       </div>
       <!-- Aside Nav -->
     </div>

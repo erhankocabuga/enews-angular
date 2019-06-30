@@ -15,14 +15,14 @@ export class NewsService {
    
   }
    
-  getCategoryNewsEndpoint(pageNo:number): string {
+  getCategoryNewsEndpoint(pageNo:number, customSection:string): string {
     const apiUrl:string = AppSettings.ApiUrl;
     const pathName:string = "search";
     const params = new HttpParams()
                       .set("api-key", AppSettings.ApiKey)
                       .set("show-blocks", "body")
                       .set("show-fields", "thumbnail")
-                      .set("section", "world|science|technology|football|business|games|environment|culture")
+                      .set("section", customSection ? customSection : "world|science|technology|football|business|games|environment|culture")
                       .set("page", pageNo.toString())
 
     return `${apiUrl}/${pathName}?${params.toString()}`;
@@ -39,7 +39,16 @@ export class NewsService {
   }
 
   getCategoryNews(pageNo:number): Observable<any> {
-    const url = this.getCategoryNewsEndpoint(pageNo);
+    const url = this.getCategoryNewsEndpoint(pageNo, null);
+    if(AppSettings.IsDevelopment) {
+      console.log("İstek:", url);
+    }
+    console.log("İstek:", url);
+    return this.http.get(url);
+  }
+
+  getCategoryNewsSpecific(pageNo:number, customSection:string): Observable<any> {
+    const url = this.getCategoryNewsEndpoint(pageNo, customSection);
     if(AppSettings.IsDevelopment) {
       console.log("İstek:", url);
     }

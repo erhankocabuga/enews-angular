@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { News } from '../models/Objects';
+import { NewsService } from '../news.service';
+import { ActivatedRoute } from '@angular/router';
+import Utils from '../general/utils';
 
 @Component({
   selector: 'app-category',
@@ -7,9 +11,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  apiResponse: {};
+  newsList:News[] = [];
+  category: string;
+
+  constructor(
+    private newsService: NewsService,
+    private route: ActivatedRoute
+  ) { 
+
+  }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.category = params["category"];
+    });
+
+    this.getNews(1);
+  }
+
+
+  getNews(pageNo: number) : void {
+    this.newsService.getCategoryNewsSpecific(pageNo, this.category)
+      .subscribe(
+        data => {
+          this.apiResponse = data;
+
+          let results:News[] = Utils.mapApiResponseToNewsForList(this.apiResponse);
+          this.newsList = [...this.newsList, ...results];
+        }
+      );
   }
 
 }

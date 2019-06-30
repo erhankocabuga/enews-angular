@@ -9,10 +9,12 @@ import Utils from '../../general/utils';
 export class ListtemplatesectionComponent implements OnInit {
 
   @Input() list:News[] = [];
+  @Input() ltype:string = '';
   
   constructor() { }
 
   ngOnInit() {
+    console.log("ltype", this.ltype);
   }
 
   getSectionClass(sectionId: string): string {  

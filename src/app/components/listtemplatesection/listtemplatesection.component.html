@@ -5,7 +5,7 @@
         <div class="container">
           <!-- row -->
           <div class="row">
-            <div class="col-md-8">
+            <div [class.col-md-12]="ltype==='wide'" [class.col-md-8]="ltype!=='wide'">
               <div class="row"> 
                  
                 <!-- post -->
@@ -32,7 +32,9 @@
                 </div>
               </div>
             </div> 
-            <div class="col-md-4">
+
+
+            <div class="col-md-4" *ngIf="ltype !=='wide'">
               <app-sidebar></app-sidebar>
             </div>
           </div>
