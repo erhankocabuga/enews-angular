@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   apiResponse: {};
   newsList:News[] = [];
 
+  public getNewsCallback: Function;
+
   constructor(
     private newsService: NewsService
   ) { 
@@ -20,11 +22,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getNews();
-   
+    this.getHomeNews();
+    this.getNewsCallback = this.getNews.bind(this);
   }
 
-  getNews(): void {
+  getHomeNews(): void {
     this.newsService.getCategoryNews(1)
       .subscribe(
         data => {
@@ -33,10 +35,23 @@ export class HomeComponent implements OnInit {
             let results:News[] = Utils.mapApiResponseToNewsForList(this.apiResponse);
             this.newsList = [...this.newsList, ...results];
             console.log("this.newsList", this.newsList);
-        }
-      );
 
-      this.newsService.getCategoryNews(2)
+            this.newsService.getCategoryNews(2)
+              .subscribe(
+                data => {
+                    this.apiResponse = data;
+                    
+                    let results:News[] = Utils.mapApiResponseToNewsForList(this.apiResponse);
+                    this.newsList = [...this.newsList, ...results];
+                    console.log("this.newsList", this.newsList);
+                }
+              );
+        }
+      ); 
+  }
+
+  getNews(pageNo: number): void {
+    this.newsService.getCategoryNews(pageNo)
       .subscribe(
         data => {
             this.apiResponse = data;
@@ -45,6 +60,6 @@ export class HomeComponent implements OnInit {
             this.newsList = [...this.newsList, ...results];
             console.log("this.newsList", this.newsList);
         }
-      );
+      ); 
   }
 }

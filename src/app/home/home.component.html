@@ -5,4 +5,4 @@
   </div>
 </div>
 
-<app-listtemplatesection [list]="newsList | slice:14" ltype="column"></app-listtemplatesection>
+<app-listtemplatesection [list]="newsList | slice:14" ltype="column" [loadMoreCallback]="getNewsCallback" currentpage="2"></app-listtemplatesection>

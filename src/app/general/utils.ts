@@ -123,10 +123,17 @@ const getCategories = () => {
     return categories;
 }; 
 
+const validateEmail = email => {
+    var reg = new RegExp(/\S+@\S+\.\S+/);
+    return reg.test(email);
+};
+
+
 
 export default {
     mapApiResponseToNewsForList,
     mapApiResponseToNewsSingle,
     getSectionClassName,
-    getCategories
+    getCategories,
+    validateEmail
 };

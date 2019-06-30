@@ -15,6 +15,8 @@ export class CategoryComponent implements OnInit {
   newsList:News[] = [];
   category: string;
 
+  public getNewsCallback: Function;
+
   constructor(
     private newsService: NewsService,
     private route: ActivatedRoute
@@ -23,6 +25,7 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getNewsCallback = this.getNews.bind(this);
     this.route.params.subscribe(params => {
       this.category = params["category"];
     });
@@ -31,7 +34,8 @@ export class CategoryComponent implements OnInit {
   }
 
 
-  getNews(pageNo: number) : void {
+  getNews(pageNo: number) : void {   
+    console.log("pageNo", pageNo);
     this.newsService.getCategoryNewsSpecific(pageNo, this.category)
       .subscribe(
         data => {
@@ -41,6 +45,5 @@ export class CategoryComponent implements OnInit {
           this.newsList = [...this.newsList, ...results];
         }
       );
-  }
-
+  } 
 }

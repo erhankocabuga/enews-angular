@@ -10,11 +10,17 @@ export class ListtemplatesectionComponent implements OnInit {
 
   @Input() list:News[] = [];
   @Input() ltype:string = '';
+  @Input() loadMoreCallback: Function;
+  @Input() currentpage: number;
   
   constructor() { }
 
-  ngOnInit() {
-    console.log("ltype", this.ltype);
+  ngOnInit() { 
+    
+  }
+
+  loadMore(): void { 
+    this.loadMoreCallback(++this.currentpage);
   }
 
   getSectionClass(sectionId: string): string {  
